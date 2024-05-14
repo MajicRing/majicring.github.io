@@ -1,0 +1,358 @@
+/* index.html */
+
+body {
+  margin: 0;
+  font: 20pt "Varela Round", sans-serif;
+  color: #4d3f73;
+  background: #fde9c6ee url("images/cow.png");
+  background-size: cover;
+  min-height: 80vh;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  background-attachment: fixed;
+  background-position: -100px 0px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  background-color: #f15d82;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  justify-content: center;
+}
+
+header img {
+  width: 1450px;
+  margin: -190px;
+}
+
+#chinner {
+  padding-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+#chinner a {
+  display: inline-flex;
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px 10px 15px;
+  border: solid 3px white;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 15pt;
+  transition: 0.2s;
+}
+
+#chinner a:hover {
+  color: #f15d82;
+  background-color: white;
+}
+
+h3 {
+  margin: 250px 0 0;
+  text-align: center;
+  color: #4d3f73
+}
+
+p#caption {
+  font-size: 14pt;
+  text-align: center;
+  margin: 10px 30px 0 30px;
+  color: #f15d82;
+}
+
+.itemList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 80px 0 80px;
+  gap: 50px 25px;
+}
+
+.item {
+  display: inline-grid;
+  place-items: center;
+}
+
+.name {
+  margin: 15px 0 25px;
+}
+
+.image {
+  height: 200px;
+  border: solid 30px #ffd06b;
+  border-radius: 13px;
+
+}
+
+@media (max-width: 450px) {
+  .item img {
+    height: 150px;
+    border-width: 15px;
+  }
+
+  .name {
+    margin: 5px 0 -5px;
+  }
+
+  a.button {
+    margin: 15px;
+  }
+
+  .itemList {
+    gap: 10px 10px;
+  }
+}
+
+@media (max-width: 937px) {
+  div.footer {
+    position: absolute;
+    bottom: -10px;
+  }
+}
+
+#human, #ashley {
+  margin-bottom: 100px;
+}
+
+.button {
+  color: white;
+  background-color: #f15d82;
+  border-radius: 12px;
+  margin: 10px 0 -10px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100px;
+  border: solid 7px #f15d82;
+  transition: 0.2s;
+  text-decoration: none;
+  text-align: center;
+  font: 18pt "Varela Round", sans-serif;
+}
+
+.button:hover {
+  background-color: white;
+  color: #f15d82;
+  border-radius: 60px;
+}
+
+#worship {
+  display: none;
+  width: 200px;
+  height: auto;
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f15d82;
+  color: white;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* order.html */
+
+.order {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 450px) {
+  .order {
+    flex-direction: column;
+    gap: 0;
+    /* margin-top: -500px; */
+    /* padding-left: 50px; */
+  }
+  #formDiv {
+    order: 2;
+    padding-left: 30px;
+  }
+  div:has(#carousel) {
+    margin-top: -40px;
+    order: 1;
+    display: grid !important;
+  }
+  img#carousel, p#itemName, p#price {
+    position: relative;
+    z-index: -1;
+  }
+  p#itemName {
+    margin-top: 15px;
+  }
+  p#price {
+    margin-top: -10px;
+  }
+}
+
+#back {
+  padding: 180px 0 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#back a.button {
+  padding-bottom: 12px;
+  width: 30px;
+  margin-left: -500px !important;
+}
+
+.order input {
+  padding: 12px;
+  border: solid 15px #ffd16b;
+  border-radius: 10px;
+  width: 250px;
+  font: 16pt "Varela Round", sans-serif;
+}
+
+input:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  font: 16pt "Varela Round", sans-serif;
+}
+
+.input {
+  margin: 20px 0 30px;
+}
+
+.order button {
+  margin-top: -10px;
+  width: fit-content;
+  text-align: center;
+}
+
+form {
+  margin-bottom: 100px;
+}
+
+label.radioContainer {
+  font-size: 15pt;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.order input[type="radio"] {
+  display: none;
+  margin-left: -41px;
+}
+
+.chs,
+.mvhs {
+  cursor: pointer;
+}
+
+.radio {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 10px 10px -9px 0;
+  border: solid 5px #ffd16b;
+  transition: 0.2s;
+}
+
+.radioContainer:hover .radio,
+.radioContainer input:checked+.radio {
+  border-color: #f15d82;
+}
+
+.radio:after {
+  content: "";
+  display: none;
+  width: 18px;
+  height: 18px;
+  background-color: #f15d82;
+  border-radius: 50%;
+  margin: 3.5px 0 0 3.5px;
+}
+
+.radioContainer input:checked+.radio:after {
+  display: block;
+}
+
+.swatch {
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  margin: 0 7px -8px 0;
+  display: inline-block;
+  border: solid 3px white;
+}
+
+#carousel {
+  border: solid 25px #ffd16b;
+  border-radius: 10px;
+  position: fixed;
+  margin-top: -100px;
+  height: 270px;
+  z-index: -1;
+}
+
+#itemName {
+  position: fixed;
+  margin-top: 220px;
+  font-size: 15pt;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#price {
+  position: fixed;
+  margin-top: 250px;
+  text-align: center;
+}
+
+/* @media (max-width: 628px) {
+  div p#price {
+    margin-top: 280px !important;
+  }
+} */
+
+/* team.html */
+
+.team {
+  display: flex;
+  gap: 0px;
+  flex-direction: column;
+}
+
+.human {
+  padding: 30px 0 25px 50px;
+}
+
+.human h1 {
+  display: inline;
+  vertical-align: top;
+  color: #f15d82;
+  font-size: 60pt;
+}
+
+.team .pink {
+  background-color: #f15d82;
+}
+
+.team .pink img {
+  border-color: #4d3f73;
+}
