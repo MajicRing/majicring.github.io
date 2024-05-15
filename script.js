@@ -181,10 +181,11 @@ $(window).scroll(function() {
 if (window.location.pathname == "/order.html") {
   var item = new URLSearchParams(window.location.search).get("item");
   if (item == undefined) {
-    item = sessionStorage.getItem("item"); // the item you clicked
-  }
-  if (item == undefined) {
-    item = "ashley";
+    if (sessionStorage.getItem("item") !== undefined) {
+      item = sessionStorage.getItem("item"); // the item you clicked
+    } else {
+      item = "ashley";
+    }
   }
 
   $("#item").attr("value", item);
