@@ -183,6 +183,9 @@ if (window.location.pathname == "/order.html") {
   if (item == undefined) {
     item = sessionStorage.getItem("item"); // the item you clicked
   }
+  if (item == undefined) {
+    item = "ashley";
+  }
 
   $("#item").attr("value", item);
 
