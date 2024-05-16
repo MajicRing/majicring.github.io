@@ -35,7 +35,7 @@ var itemInfo = {
   ashley: {
     type: "human",
     name: "Ashley Qi",
-    img: "ashley.png"
+    img: "ashley.jpeg"
   }
 }
 
