@@ -1,8 +1,8 @@
 // change prices for each category here
 var prices = {
-  plant: 5,
+  plant: 4,
   animal: 8,
-  human: 10
+  human: 6
 }
 
 // each item's category and full name
@@ -46,9 +46,11 @@ var itemForm = {
       question: "Facial expression", // the text that shows up
       name: "face", // make up a question ID
       options: [
-        { id: "happy", value: "Happy •u•", color: "" },
-        { id: "neutral", value: "Neutral ._.", color: "" },
-        { id: "sad", value: "Sad •n•", color: "" }
+        { id: "happy", value: "HAPPY: sees a doggo in a car", color: "" },
+        { id: "bored", value: "BORED: falling asleep in spanish class", color: "" },
+        { id: "sad", value: "CRYING: remembering 2024 president choices", color: "" },
+        { id: "openMouth", value: "OPEN MOUTH: unhinging jaw to consume food", color: "" }
+        // wait whats wrong with open mouth uhhhhhhh ok i think it was ohhhh makes cents cuz the id was the same as the crying? oh uhhh ok could u add a checkbox for keychain or no keychain like ig some ppl dont want keychains 
       ]
     },
     {
@@ -93,9 +95,10 @@ var itemForm = {
       question: "Facial expression", // the text that shows up
       name: "face", // make up a question ID
       options: [
-        { id: "happy", value: "Going undefeated in debate (happy)", color: "" },
-        { id: "neutral", value: "Being bored in class (neutral)", color: "" },
-        { id: "sad", value: "Sad", color: "" }
+        { id: "happy", value: "HAPPY: had a keychain made of her", color: "" },
+        { id: "bored", value: "BORED: chilling in Alg 2 Trig because the class is too easy", color: "" },
+        { id: "sad", value: "SAD: got kicked out of JV debate for being too good", color: "" },
+        { id: "openMouth", value: "OPEN MOUTH: yawning during class due to sleep deprivation", color: "" },
       ]
     },
     // {
@@ -114,7 +117,7 @@ var itemForm = {
         { id: "medium", value: "Medium", color: "" }
       ]
     }
-  ],
+  ]
 };
 
 // when you click an item, it saves what item you clicked (like "duck")
@@ -162,17 +165,19 @@ if (window.location.pathname == "/team.html") {
 $(window).scroll(function() {
   if ($(document).scrollTop() > 50) {
     $("#chinner").hide();
-    if ($(window).width() > 450) {
+    if ($(window).width() > 870) {
       $("#carousel").css("margin-top", "-168px");
-      $("#itemName").css("margin-top", "152px");
-      $("#price").css("margin-top", "182px");
+      $("#itemName").css("margin-top", "162px");
+      $("#price").css("margin-top", "192px");
+      $("#facialX").css("margin-top", "-18px");
     }
   } else {
     $("#chinner").show();
-    if ($(window).width() > 450) {
+    if ($(window).width() > 870) {
       $("#carousel").css("margin-top", "-100px");
-      $("#itemName").css("margin-top", "220px");
-      $("#price").css("margin-top", "250px");
+      $("#itemName").css("margin-top", "230px");
+      $("#price").css("margin-top", "260px");
+      $("#facialX").css("margin-top", "50px");
     }
   }
 });
@@ -180,12 +185,8 @@ $(window).scroll(function() {
 // stuff to do on the order page
 if (window.location.pathname == "/order.html") {
   var item = new URLSearchParams(window.location.search).get("item");
-  if (item == null) {
-    if (sessionStorage.getItem("item") !== null) {
-      item = sessionStorage.getItem("item"); // the item you clicked
-    } else {
-      item = "ashley";
-    }
+  if (item == undefined) {
+    item = sessionStorage.getItem("item"); // the item you clicked
   }
 
   $("#item").attr("value", item);
@@ -199,16 +200,22 @@ if (window.location.pathname == "/order.html") {
 
   // update form based on what item u clicked (customization etc.)
   updateForm();
-  
+
   // change price when accessories are added
   $("input[name='addons']").change(function() {
     if (this.id !== "none") {
-      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]+1}`;
+      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type] + 1}`;
     } else {
       $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]}`;
     }
   });
-  
+
+  // change facial expression
+  $("input[name='face']").change(function() {
+    $("#facialX").attr("src", `images/items/faces/${this.id}.png`);
+    console.log($("facialX").attr("src"));
+  });
+
   // when u submit, it disables submit button and sends ur answers to the google sheet
   var form = $("#orderForm")[0];
   $(form).submit(function(e) { // when you submit the form
