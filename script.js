@@ -185,8 +185,12 @@ $(window).scroll(function() {
 // stuff to do on the order page
 if (window.location.pathname == "/order.html") {
   var item = new URLSearchParams(window.location.search).get("item");
-  if (item == undefined) {
-    item = sessionStorage.getItem("item"); // the item you clicked
+  if (item == null) {
+    if (sessionStorage.getItem("item") !== null) {
+      item = sessionStorage.getItem("item"); // the item you clicked
+    } else {
+      item = "ashley";
+    }
   }
 
   $("#item").attr("value", item);
