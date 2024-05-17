@@ -1,8 +1,8 @@
 // change prices for each category here
 var prices = {
-  plant: 4,
+  plant: 3,
   animal: 8,
-  human: 6
+  human: 4
 }
 
 // each item's category and full name
@@ -208,6 +208,15 @@ if (window.location.pathname == "/order.html") {
   // change price when accessories are added
   $("input[name='addons']").change(function() {
     if (this.id !== "none") {
+      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type] + 1}`;
+    } else {
+      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]}`;
+    }
+  });
+
+  // change price based on size
+  $("input[name='size']").change(function() {
+    if (this.id == "medium") {
       $("#price")[0].innerHTML = `$${prices[itemInfo[item].type] + 1}`;
     } else {
       $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]}`;
