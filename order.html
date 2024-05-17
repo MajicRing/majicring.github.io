@@ -14,7 +14,7 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="images/majic.png">
+      <img src="images/MAJiC.png">
     </a>
     <div id="chinner">
       <!-- <a href="team.html">Meet the Team</a> -->
@@ -24,14 +24,14 @@
       <!-- <a href="other.html">Other</a> -->
     </div>
   </header>
-  <div id="back">
+  <!-- <div id="back">
     <a class="button" onclick="history.length > 1 ? history.back() : window.location.href = 'index.html'"
       style="margin-top: 70px;">←</a>
-  </div>
+  </div> -->
   <section class="order">
-    <div id="formDiv">
+    <div id="formDiv" style="max-width: 400px;">
       <form id="orderForm" method="POST"
-        action="https://script.google.com/macros/s/AKfycbx7L18tzncGxKV5dqH-SXxKHVSueK4MSj5AMTRaE4pYH-PYKCocmKsiYeGFKgPoDJbIbg/exec">
+        action="https://script.google.com/macros/s/AKfycbx7L18tzncGxKV5dqH-SXxKHVSueK4MSj5AMTRaE4pYH-PYKCocmKsiYeGFKgPoDJbIbg/exec" >
         <!-- Item -->
         <input type="hidden" id="item" name="item" required> <br>
         <!-- Name -->
@@ -55,6 +55,7 @@
           <span class="radio input"></span>
           Monta Vista High School
         </label> <br> <br>
+        <!-- Item-specific questions -->
         <div id="itemForm"></div>
         <!-- Keychain -->
         <label class="input" for="keychain">Keychain</label> <br>
@@ -70,12 +71,13 @@
         </label> <br> <br>
         <!-- Submit -->
         <button type="submit" class="button" id="submit">Order</button>
-        <p id="thx" style="display: none; font-size: 14pt; text-align: center; width: 300px; margin-top: 30px;">Thank you for ordering from Majic Ring! We will email you soon with pickup and payment details.
+        <p id="thx">Thank you for ordering from Majic Ring! We will email you soon with pickup and payment details.
         </p>
       </form>
     </div>
-    <div style="display: flex; justify-content: center;">
+    <div id="sidePanel">
       <img id="carousel" src="">
+      <img id="facialX" src="images/items/faces/happy.png">
       <p id="itemName"></p>
       <p id="price"></p>
     </div>
