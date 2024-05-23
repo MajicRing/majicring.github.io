@@ -145,13 +145,26 @@ p#caption {
   border-radius: 60px;
 }
 
-#worship {
-  display: none;
-  width: 200px;
-  height: auto;
-  position: absolute;
-  pointer-events: none;
-  z-index: 999;
+#suggest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#suggest span {
+  margin-top: 30px;
+  width: 300px;
+  background: white;
+  cursor: text;
+}
+
+#suggest span:focus {
+  outline: none;
+}
+
+#suggest span:empty::before {
+  content: "Example: I would like to suggest a crochet goat wearing a scarf.";
+  color: gray;
 }
 
 .footer {
@@ -189,7 +202,7 @@ p#caption {
     order: 2;
     margin-top: -150px;
   }
-  
+
   div#sidePanel {
     order: 1;
     display: grid !important;
@@ -230,7 +243,8 @@ p#caption {
   margin-left: -800px !important;
 }
 
-.order input {
+.order input,
+#suggest span.input {
   padding: 12px;
   border: solid 15px #ffd16b;
   border-radius: 10px;
@@ -262,7 +276,7 @@ input:focus {
   text-align: center;
 }
 
-form {
+#orderForm {
   margin-bottom: 100px;
 }
 
@@ -270,6 +284,16 @@ label.radioContainer {
   font-size: 15pt;
   line-height: 50px;
   cursor: pointer;
+  display: inline-table;
+}
+
+label.radioContainer span:not(.swatch):not(.radio) {
+  display: inline-block;
+  width: 350px;
+  max-width: 85%;
+  line-height: 30px;
+  vertical-align: text-top;
+  margin-top: -2.5px;
 }
 
 .order input[type="radio"] {
@@ -348,6 +372,7 @@ label.radioContainer {
   position: fixed;
   margin-top: 50px;
   width: 120px;
+  display: none;
 }
 
 #thx {
@@ -393,4 +418,13 @@ label.radioContainer {
 
 .team .pink img {
   border-color: #4d3f73;
+}
+
+#worship {
+  display: none;
+  width: 200px;
+  height: auto;
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
 }
