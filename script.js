@@ -12,6 +12,11 @@ var itemInfo = {
     name: "Celine Zhang",
     img: "sea.png"
   },
+  cat: {
+    type: "animal",
+    name: "Cat",
+    img: "cat.png"
+  },
   leaf: {
     type: "plant",
     name: "Leaf",
@@ -21,12 +26,7 @@ var itemInfo = {
     type: "human",
     name: "Ashley Qi",
     img: "ashley.jpeg"
-  },
-  cat: {
-    type: "animal",
-    name: "Cat",
-    img: "cat.png"
-  },
+  }
 }
 
 // form questions for each individual item
@@ -123,16 +123,16 @@ function createMCQ(form, item) {
     $(form).append(`<label class="input" for="${mcq.name}">${mcq.question}</label> <br>`);
     // var mcqOption =
     mcq.options.forEach(function(option) {
-      $(form).append(`<label for="${option.id}" style="margin-top: 5px;" class="radioContainer">
+      $(form).append(`<label for="${option.id}" class="radioContainer">
        <input type="radio" id="${option.id}" name="${mcq.name}" value="${option.value}" class="input" required>
        <span class="radio input"></span>`);
       optionLabel = $(`label[for=${option.id}]`);
       if (option.color !== "") {
         $(optionLabel).append(`<span class="swatch" style="background-color: ${option.color};"></span>`);
       }
-      $(optionLabel).append(` ${option.value}</label> <br>`);
+      $(optionLabel).append(` <span>${option.value}</span> </label> <br>`);
     });
-    $(form).append("<br>");
+    $(form).append("<br> <br>");
   })
 }
 
@@ -153,23 +153,17 @@ if (window.location.pathname == "/team.html") {
 
 // hide chinner after u scroll down
 $(window).scroll(function() {
-  if ($(document).scrollTop() > 50) {
+  var scrollTop = $(document).scrollTop();
+  if (scrollTop > 50) {
     $("#chinner").hide();
     if ($(window).width() > 870) {
-      $("#carousel").css("margin-top", "-168px");
-      $("#itemName").css("margin-top", "162px");
-      $("#price").css("margin-top", "192px");
-      $("#facialX").css("margin-top", "-18px");
+      $("#sidePanel").css("margin-top", "52px");
     }
   } else {
     $("#chinner").show();
-    if ($(window).width() > 870) {
-      $("#carousel").css("margin-top", "-100px");
-      $("#itemName").css("margin-top", "230px");
-      $("#price").css("margin-top", "260px");
-      $("#facialX").css("margin-top", "50px");
-    }
+    $("#sidePanel").css("margin-top", "120px");
   }
+  $(document).scrollTop(scrollTop);
 });
 
 // stuff to do on the order page
@@ -239,12 +233,6 @@ if (window.location.pathname == "/order.html") {
     console.log($("facialX").attr("src"));
   });
 
-  // change facial expression
-  $("input[name='face']").change(function() {
-    $("#facialX").attr("src", `images/items/faces/${this.id}.png`);
-    console.log($("facialX").attr("src"));
-  });
-
   // when u submit, it disables submit button and sends ur answers to the google sheet
   var form = $("#orderForm")[0];
   $(form).submit(function(e) { // when you submit the form
@@ -276,3 +264,21 @@ function updateForm() {
     createMCQ(form, itemForm[item]);
   }
 }
+
+// submit suggestion
+$("#suggest").submit(function(e) { // when you submit the form
+  e.preventDefault(); // don't reload to this random weird page
+  $("#suggestedItem").attr("value", $("#suggestSpan").text());
+  $("#submitSuggestion").attr("disabled", true); // disable submit button
+  $("#submitSuggestion").html("<i>Submitting...</i>");
+  // idk how this works but it sends to google sheet
+  var data = new FormData($("#suggest")[0]);
+  var action = e.target.action;
+  fetch(action, {
+    method: "POST",
+    body: data,
+  })
+    .then(() => {
+      $("#submitSuggestion").html("Submitted!");
+    })
+});
