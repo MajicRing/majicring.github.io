@@ -190,27 +190,53 @@ if (window.location.pathname == "/order.html") {
 
   // show name and price of selected item
   $("#itemName")[0].innerHTML += itemInfo[item].name;
-  $("#price")[0].innerHTML += `$${prices[itemInfo[item].type]}`;
+  var price = prices[itemInfo[item].type];
+  $("#price")[0].innerHTML += `$${price}`;
+
+  if (itemInfo[item].type == "human") {
+    $("#facialX").show();
+  }
 
   // update form based on what item u clicked (customization etc.)
   updateForm();
 
   // change price when accessories are added
+  var reasonChanged = "";
   $("input[name='addons']").change(function() {
     if (this.id !== "none") {
-      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type] + 1}`;
+      price++;
+      if (!reasonChanged.includes("addon")) {
+        reasonChanged += "addon";
+      }
+      $("#price")[0].innerHTML = `$${price}`;
     } else {
-      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]}`;
+      if (price > prices[itemInfo[item].type] && reasonChanged.includes("addon")) {
+        price--;
+      }
+      $("#price")[0].innerHTML = `$${price}`;
     }
   });
 
   // change price based on size
   $("input[name='size']").change(function() {
     if (this.id == "medium") {
-      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type] + 1}`;
+      price++;
+      if (!reasonChanged.includes("size")) {
+        reasonChanged += "size";
+      }
+      $("#price")[0].innerHTML = `$${price}`;
     } else {
-      $("#price")[0].innerHTML = `$${prices[itemInfo[item].type]}`;
+      if (price > prices[itemInfo[item].type] && reasonChanged.includes("size")) {
+        price--;
+      }
+      $("#price")[0].innerHTML = `$${price}`;
     }
+  });
+
+  // change facial expression
+  $("input[name='face']").change(function() {
+    $("#facialX").attr("src", `images/items/faces/${this.id}.png`);
+    console.log($("facialX").attr("src"));
   });
 
   // change facial expression
