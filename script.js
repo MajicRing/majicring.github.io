@@ -12,21 +12,6 @@ var itemInfo = {
     name: "Celine Zhang",
     img: "sea.png"
   },
-  brain: {
-    type: "plant",
-    name: "Brain",
-    img: "brain.png"
-  },
-  pig: {
-    type: "animal",
-    name: "Peppa Pig",
-    img: "pig.png"
-  },
-  duck: {
-    type: "animal",
-    name: "Donald Duck",
-    img: "duck.png"
-  },
   leaf: {
     type: "plant",
     name: "Leaf",
@@ -36,7 +21,12 @@ var itemInfo = {
     type: "human",
     name: "Ashley Qi",
     img: "ashley.jpeg"
-  }
+  },
+  cat: {
+    type: "animal",
+    name: "Cat",
+    img: "cat.png"
+  },
 }
 
 // form questions for each individual item
