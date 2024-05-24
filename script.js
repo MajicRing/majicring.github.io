@@ -20,7 +20,7 @@ var itemInfo = {
   leaf: {
     type: "plant",
     name: "Leaf",
-    img: "leaf.jpg"
+    img: "leaf.png"
   },
   ashley: {
     type: "human",
