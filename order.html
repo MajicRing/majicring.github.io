@@ -58,17 +58,20 @@
         <!-- Item-specific questions -->
         <div id="itemForm"></div>
         <!-- Keychain -->
-        <label class="input" for="keychain">Keychain</label> <br>
-        <label for="yeschain" style="margin-top: 20px;" class="radioContainer">
-          <input type="radio" id="yeschain" name="keychain" value="Keychain attached (no added cost)" class="input" required>
-          <span class="radio input"></span>
-          Keychain attached (no added cost)
-        </label> <br>
-        <label for="nochain" class="radioContainer">
-          <input type="radio" id="nochain" name="keychain" value="No keychain" class="input" required>
-          <span class="radio input"></span>
-          No keychain
-        </label> <br> <br>
+        <div id="keychainQ">
+          <label class="input" for="keychain">Keychain</label> <br>
+          <label for="yeschain" class="radioContainer">
+            <input type="radio" id="yeschain" name="keychain" value="Keychain attached (no added cost)" class="input"
+              required>
+            <span class="radio input"></span>
+            <span>Keychain attached (no added cost)</span>
+          </label> <br>
+          <label for="nochain" class="radioContainer">
+            <input type="radio" id="nochain" name="keychain" value="No keychain" class="input" required>
+            <span class="radio input"></span>
+            <span>No keychain</span>
+          </label> <br> <br>
+        </div>
         <!-- Submit -->
         <button type="submit" class="button" id="submit">Order</button>
         <p id="thx">Thank you for ordering from Majic Ring! We will email you soon with pickup and payment details.
