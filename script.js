@@ -2,7 +2,9 @@
 var prices = {
   plant: 3,
   animal: 8,
-  human: 4
+  human: 4,
+  misc: 1,
+  kris: 0.50,
 }
 
 // each item's category and full name
@@ -26,7 +28,22 @@ var itemInfo = {
     type: "human",
     name: "Ashley Qi",
     img: "ashley.jpeg"
-  }
+  },
+  heart: {
+    type: "misc",
+    name: "Heart",
+    img: "cat.png"
+  },
+  jellyfish: {
+    type: "animal",
+    name: "Jellyfish",
+    img: "jellyfish.png"
+  },
+  kris: {
+    type: "kris",
+    name: "Flower chain (3\")",
+    img: "kris.png"
+  },
 }
 
 // form questions for each individual item
@@ -107,8 +124,42 @@ var itemForm = {
         { id: "medium", value: "Medium", color: "" }
       ]
     }
-  ]
+  ],
+  heart: [
+    {
+      question: "Color",
+      name: "color",
+      options: [
+        { id: "red", value: "Red", color: "#E40000" },
+        { id: "lightPink", value: "Light pink", color: "#F6CED3" },
+        { id: "darkPink", value: "Dark pink", color: "#B87585" }
+      ]
+    },
+    // {
+    //   question: "Color",
+    //   name: "color",
+    //   options: [
+    //     { id: "lgreen", value: "Light green", color: "lightgreen" },
+    //     { id: "dgreen", value: "Dark green", color: "darkgreen" }
+    //   ]
+    // }
+  ],
 };
+
+// turn chinner into dropdown on smaller screens (phones)
+// function chinnerToDropdown() {
+//   if ($(window).width() < 570) {
+//     $("#chinner a").hide();
+//   } else {
+
+//   }
+// }
+
+// chinnerToDropdown();
+
+$(window).resize(function() {
+  // chinnerToDropdown();
+})
 
 // when you click an item, it saves what item you clicked (like "duck")
 $(".orderLink").click(function() {
@@ -128,9 +179,16 @@ function createMCQ(form, item) {
        <span class="radio input"></span>`);
       optionLabel = $(`label[for=${option.id}]`);
       if (option.color !== "") {
-        $(optionLabel).append(`<span class="swatch" style="background-color: ${option.color};"></span>`);
+        $(optionLabel).append(`<span class="swatch" style="background-color: ${option.color};"> </span>`);
+        $(optionLabel).css("display", "table");
+        $(".optionVal").each(function() {
+          $(this).css("display", "inline");
+          console.log($(this))
+        })
+        // $(".optionVal").css({"display": "inline"});
+        console.log($(".optionVal").css("display") + option.color)
       }
-      $(optionLabel).append(` <span>${option.value}</span> </label> <br>`);
+      $(optionLabel).append(`<span class="optionVal">${option.value}</span> </label> <br>`);
     });
     $(form).append("<br> <br>");
   })
@@ -185,7 +243,14 @@ if (window.location.pathname == "/order.html") {
   // show name and price of selected item
   $("#itemName")[0].innerHTML += itemInfo[item].name;
   var price = prices[itemInfo[item].type];
-  $("#price")[0].innerHTML += `$${price}`;
+  $("#price")[0].innerHTML = `$${price}`;
+  if (price.toString().indexOf(".") == price.toString().length - 2) {
+    $("#price")[0].innerHTML += "0"
+  }
+
+  if (item = "kris") {
+    $("#keychainQ").hide();
+  }
 
   if (itemInfo[item].type == "human") {
     $("#facialX").show();
