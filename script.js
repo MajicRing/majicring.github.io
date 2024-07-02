@@ -41,7 +41,7 @@ var itemInfo = {
   },
   kris: {
     type: "kris",
-    name: "Flower chain (3\")",
+    name: "Flower chain (3 in.)",
     img: "kris.png"
   },
 }
