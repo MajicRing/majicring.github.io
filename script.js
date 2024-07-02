@@ -245,7 +245,7 @@ if (window.location.pathname == "/order.html") {
   var price = prices[itemInfo[item].type];
   $("#price")[0].innerHTML = `$${price}`;
   if (price.toString().indexOf(".") == price.toString().length - 2 && price.toString().indexOf(".") !== -1) {
-    $("#price")[0].innerHTML += "0"
+    $("#price")[0].innerHTML += "0";
   }
 
   if (item = "kris") {
