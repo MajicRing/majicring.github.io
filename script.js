@@ -44,6 +44,11 @@ var itemInfo = {
     name: "Flower chain (3 in.)",
     img: "kris.png"
   },
+  goat: {
+    type: "goat",
+    name: "Goat",
+    img: "goat.png"
+  },
 }
 
 // form questions for each individual item
