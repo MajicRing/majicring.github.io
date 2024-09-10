@@ -5,6 +5,7 @@ var prices = {
   human: 4,
   misc: 1,
   kris: 0.50,
+  goat: 7,
 }
 
 // each item's category and full name
