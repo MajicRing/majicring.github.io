@@ -50,6 +50,11 @@ var itemInfo = {
     name: "Goat",
     img: "goat.png"
   },
+  duck: {
+    type: "human",
+    name: "Duck",
+    img: "duck.jpg"
+  },
 }
 
 // form questions for each individual item
